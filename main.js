@@ -1,20 +1,21 @@
-var xhr = new XMLHttpRequest();
-var data;
+function getData(cb) {  // cb - for 'callback'
 
+    var xhr = new XMLHttpRequest();
+    // GET is used to retrieving data from server, second argument is URL that we wont to retrieve.
+    xhr.open("GET", "https://ci-swapi.herokuapp.com/api/");
+    xhr.send();
 
-// GET is used to retrieving data from server, second argument is URL that we wont to retrieve.
-xhr.open("GET", "https://ci-swapi.herokuapp.com/api/");
-xhr.send();
+    xhr.onreadystatechange = function () {
 
-xhr.onreadystatechange = function() {
+        // The if statement is true then 'readyState is fully loaded' and 'status' successful responses
+        if (this.readyState == 4 && this.status == 200) {
 
-    // The if statement is true then 'readyState is fully loaded' and 'status' successful responses
-    if (this.readyState == 4 && this.status == 200) {
+            cb(JSON.parse(this.responseText));
+        }
+    };
 
-        data = JSON.parse(this.responseText);
-    }
-};
+}
 
-setTimeout(function() {
+getData(function(data) {
     console.log(data);
-}, 500);
+})
