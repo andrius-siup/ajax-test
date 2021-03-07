@@ -25,8 +25,11 @@ function writeToDocument(type) {
         data = data.results;
 
         data.forEach(function(item) {
+            Object.keys(item).forEach(function(key) {
+                console.log(key);
+            })
              el.innerHTML += "<p>" + item.name + "</p>";
-        })
+        });
        
     });
 }
