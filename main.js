@@ -25,7 +25,7 @@ function writeToDocument(type) {
         data = data.results;
 
         data.forEach(function(item) {
-             document.getElementById("data").innerHTML += "<p>" + item.name + "</p>";
+             el.innerHTML += "<p>" + item.name + "</p>";
         })
        
     });
