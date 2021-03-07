@@ -4,7 +4,7 @@ function getData(type, cb) {  // cb - for 'callback'
 
     var xhr = new XMLHttpRequest();
     // GET is used to retrieving data from server, second argument is URL that we wont to retrieve.
-    xhr.open("GET", baseURL + type);
+    xhr.open("GET", baseURL + type + "/");
     xhr.send();
 
     xhr.onreadystatechange = function () {
