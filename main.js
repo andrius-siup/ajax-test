@@ -43,7 +43,7 @@ function writeToDocument(type) {
            Object.keys(item).forEach(function(key) {
                dataRow.push(`<td>${item[key]}</td>`);
            });
-           tableRows.push(dataRow); 
+           tableRows.push(`<tr>${dataRow}</tr>`); 
         });
        el.innerHTML = `<table>${tableHeaders}${tableRows}</table>`;
     });
