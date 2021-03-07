@@ -1,20 +1,14 @@
-
-function getData(url, cb) {  // cb - for 'callback'
-
+function getData(url, cb) {  
     var xhr = new XMLHttpRequest();
-    // GET is used to retrieving data from server, second argument is URL that we wont to retrieve.
+    
     xhr.open("GET", url);
     xhr.send();
 
     xhr.onreadystatechange = function () {
-
-        // The if statement is true then 'readyState is fully loaded' and 'status' successful responses
         if (this.readyState == 4 && this.status == 200) {
-
             cb(JSON.parse(this.responseText));
         }
     };
-
 }
 
 function getTableHeaders(obj) {
@@ -42,11 +36,12 @@ function writeToDocument(url) {
 
     var tableRows = [];
     var el = document.getElementById("data");
-    el.innerHTML = "";
+   // el.innerHTML = "";
     getData(url, function (data) {
+        var pagination;
 
         if (data.next || data.previous) {
-            var pagination;
+            
             pagination = generatePaginationButtons(data.next, data.previous);
         }
         data = data.results;
@@ -58,10 +53,10 @@ function writeToDocument(url) {
             Object.keys(item).forEach(function (key) {
                 var rowData = item[key].toString();
                 var truncatedData = rowData.substring(0, 15);
-                dataRow.push(`< td > ${truncatedData}</td > `);
+                dataRow.push(`<td>${truncatedData}</td>`);
             });
-            tableRows.push(`< tr > ${dataRow}</tr > `);
+            tableRows.push(`<tr>${dataRow}</tr>`);
         });
-        el.innerHTML = `< table > ${tableHeaders}${tableRows}</table >${pagination}`;
+        el.innerHTML = `<table>${tableHeaders}${tableRows}</table >${pagination}`;
     });
 }
