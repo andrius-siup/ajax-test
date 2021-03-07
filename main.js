@@ -20,7 +20,11 @@ function getData(type, cb) {  // cb - for 'callback'
 
 function writeToDocument(type) {
     getData(type, function(data) {
-        console.dir(data);
-        document.getElementById("data").innerHTML = data.results;
+        data = data.results;
+
+        data.forEach(function(item) {
+             document.getElementById("data").innerHTML = item.name;
+        })
+       
     });
 }
