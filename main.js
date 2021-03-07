@@ -19,6 +19,8 @@ function getData(type, cb) {  // cb - for 'callback'
 }
 
 function writeToDocument(type) {
+    var el = document.getElementById("data");
+    
     getData(type, function(data) {
         data = data.results;
 
