@@ -29,6 +29,8 @@ function getTableHeaders(obj) {
 }
 
 function writeToDocument(type) {
+
+    var tableRows = [];
     var el = document.getElementById("data");
     el.innerHTML = ""; 
     getData(type, function(data) {
