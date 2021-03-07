@@ -16,6 +16,8 @@ function getData(cb) {  // cb - for 'callback'
 
 }
 
-getData(function(data) {
+function printDataToConsole(data) {
     console.log(data);
-})
+}
+
+getData(printDataToConsole);
