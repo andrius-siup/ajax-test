@@ -1,8 +1,10 @@
-function getData(cb) {  // cb - for 'callback'
+const baseURL = "https://ci-swapi.herokuapp.com/api/";
+
+function getData(type, cb) {  // cb - for 'callback'
 
     var xhr = new XMLHttpRequest();
     // GET is used to retrieving data from server, second argument is URL that we wont to retrieve.
-    xhr.open("GET", "https://ci-swapi.herokuapp.com/api/");
+    xhr.open("GET", baseURL + type);
     xhr.send();
 
     xhr.onreadystatechange = function () {
@@ -16,6 +18,8 @@ function getData(cb) {  // cb - for 'callback'
 
 }
 
-getData(function(data) {
-    console.log(data);
-})
+function writeToDocument(type) {
+    getData(type, function(data) {
+        document.getElementById("data").innerHTML = data;
+    });
+}
